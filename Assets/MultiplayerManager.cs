@@ -31,6 +31,7 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
         { 
           var cube =  runner.Spawn(magicCubePrefab,cubeSpawnPoint.gameObject.transform.position,cubeSpawnPoint.gameObject.transform.rotation);
           cube.transform.position = cubeSpawnPoint.transform.position;
+            Debug.Log("Spawned1");
         }
     }
 
