@@ -9,12 +9,27 @@ using UnityEngine;
 public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
 {
     public NetworkObject playerPrefab;
+    public NetworkObject magicCubePrefab;
+
     public CinemachineVirtualCamera followCamera;
     public NetworkRunner networkRunner;
 
     public void OnConnectedToServer(NetworkRunner runner)
     {
         SpawnLocalPlayer(runner);
+
+        if (runner.IsSharedModeMasterClient) 
+        {
+            SpawnMagicCubes(runner);
+        }
+    }
+
+    private void SpawnMagicCubes(NetworkRunner runner)
+    {
+        foreach (CubeSpawnPoint cubeSpawnPoint in FindObjectsOfType<CubeSpawnPoint>()) 
+        { 
+            runner.Spawn(magicCubePrefab,cubeSpawnPoint.gameObject.transform.position,cubeSpawnPoint.gameObject.transform.rotation);
+        }
     }
 
     private void SpawnLocalPlayer(NetworkRunner runner)
