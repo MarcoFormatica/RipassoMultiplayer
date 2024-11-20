@@ -16,7 +16,7 @@ public class Character : NetworkBehaviour
             }
             else
             {
-                gameObject.SetActive(false);
+                magicCube.gameObject.SetActive(false);
             }
         }
     }
