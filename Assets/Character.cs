@@ -14,6 +14,10 @@ public class Character : NetworkBehaviour
             {
                Runner.Despawn(magicCube.GetComponent<NetworkObject>());
             }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 }
