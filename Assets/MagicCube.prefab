@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 3743731769
   ObjectInterest: 1
-  Flags: 131073
+  Flags: 524289
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 4760642282587777645}
@@ -175,4 +175,4 @@ MonoBehaviour:
   SyncScale: 0
   SyncParent: 1
   _autoAOIOverride: 0
-  DisableSharedModeInterpolation: 0
+  DisableSharedModeInterpolation: 1
