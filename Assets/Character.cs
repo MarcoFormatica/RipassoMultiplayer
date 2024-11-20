@@ -10,7 +10,7 @@ public class Character : NetworkBehaviour
         MagicCube magicCube = other.GetComponent<MagicCube>();
         if(magicCube != null)
         {
-            if (Runner.IsSharedModeMasterClient && HasStateAuthority)
+            if (magicCube.GetComponent<NetworkObject>().HasStateAuthority)
             {
                Runner.Despawn(magicCube.GetComponent<NetworkObject>());
             }
