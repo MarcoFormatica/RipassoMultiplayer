@@ -20,6 +20,7 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
     private void SpawnLocalPlayer(NetworkRunner runner)
     {
         NetworkObject player = runner.Spawn(playerPrefab,transform.position,transform.rotation);
+        followCamera.Follow = player.gameObject.GetComponentInChildren<PlayerCameraRoot>().gameObject.transform;
     }
 
     public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason)
