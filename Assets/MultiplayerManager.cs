@@ -30,14 +30,13 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
         foreach (CubeSpawnPoint cubeSpawnPoint in FindObjectsOfType<CubeSpawnPoint>()) 
         { 
           var cube =  runner.Spawn(magicCubePrefab,cubeSpawnPoint.gameObject.transform.position,cubeSpawnPoint.gameObject.transform.rotation);
-          cube.transform.position = cubeSpawnPoint.transform.position;
+          // cube.transform.position = cubeSpawnPoint.transform.position;
         }
     }
 
     private void SpawnLocalPlayer(NetworkRunner runner)
     {
         NetworkObject player = runner.Spawn(playerPrefab,transform.position,transform.rotation);
-        // player.transform.position = new Vector3(4, 2, 4);
         followCamera.Follow = player.gameObject.GetComponentInChildren<PlayerCameraRoot>().gameObject.transform;
     }
 
