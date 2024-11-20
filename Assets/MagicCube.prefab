@@ -174,5 +174,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SyncScale: 0
   SyncParent: 1
-  _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 1
+  _autoAOIOverride: 0
+  DisableSharedModeInterpolation: 0
