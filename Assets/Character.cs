@@ -12,7 +12,7 @@ public class Character : NetworkBehaviour
         {
             if (Runner.IsSharedModeMasterClient && HasStateAuthority)
             {
-             //   Runner.Despawn(magicCube.GetComponent<NetworkObject>());
+                Runner.Despawn(magicCube.GetComponent<NetworkObject>());
             }
         }
     }

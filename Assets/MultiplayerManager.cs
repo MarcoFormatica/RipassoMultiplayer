@@ -37,7 +37,7 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
     private void SpawnLocalPlayer(NetworkRunner runner)
     {
         NetworkObject player = runner.Spawn(playerPrefab,transform.position,transform.rotation);
-        player.transform.position = new Vector3(4, 2, 4);
+        // player.transform.position = new Vector3(4, 2, 4);
         followCamera.Follow = player.gameObject.GetComponentInChildren<PlayerCameraRoot>().gameObject.transform;
     }
 
