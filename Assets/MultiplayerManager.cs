@@ -1,3 +1,4 @@
+using Cinemachine;
 using Fusion;
 using Fusion.Sockets;
 using System;
@@ -7,12 +8,18 @@ using UnityEngine;
 
 public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
 {
-
+    public NetworkObject playerPrefab;
+    public CinemachineVirtualCamera followCamera;
     public NetworkRunner networkRunner;
 
     public void OnConnectedToServer(NetworkRunner runner)
     {
+        SpawnLocalPlayer(runner);
+    }
 
+    private void SpawnLocalPlayer(NetworkRunner runner)
+    {
+        NetworkObject player = runner.Spawn(playerPrefab,transform.position,transform.rotation);
     }
 
     public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason)
