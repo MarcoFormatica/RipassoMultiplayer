@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 8892827649260279766}
   - component: {fileID: 17466770603016140}
   - component: {fileID: 3533973015480320861}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -744,7 +744,7 @@ MonoBehaviour:
   SyncScale: 0
   SyncParent: 0
   _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 0
+  DisableSharedModeInterpolation: 1
 --- !u!114 &3533973015480320861
 MonoBehaviour:
   m_ObjectHideFlags: 0
