@@ -28,7 +28,8 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
     {
         foreach (CubeSpawnPoint cubeSpawnPoint in FindObjectsOfType<CubeSpawnPoint>()) 
         { 
-            runner.Spawn(magicCubePrefab,cubeSpawnPoint.gameObject.transform.position,cubeSpawnPoint.gameObject.transform.rotation);
+          var cube =  runner.Spawn(magicCubePrefab,cubeSpawnPoint.gameObject.transform.position,cubeSpawnPoint.gameObject.transform.rotation);
+            cube.transform.position = cubeSpawnPoint.transform.position;
         }
     }
 
