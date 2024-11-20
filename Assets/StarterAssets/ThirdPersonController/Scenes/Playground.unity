@@ -213,7 +213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 8892827649260279766, guid: fbb3719408bde9a409562cd8125a8004,
     type: 3}
-  magicCubePrefab: {fileID: 0}
+  magicCubePrefab: {fileID: 6674071088244382466, guid: 287cc79b73a423741bca7f07a5cc8e61,
+    type: 3}
   followCamera: {fileID: 394559363}
   networkRunner: {fileID: 223914657}
 --- !u!4 &223914659
