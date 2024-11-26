@@ -1,10 +1,16 @@
 using Fusion;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : NetworkBehaviour
 {
+    internal void Fire()
+    {
+        Debug.Log("Bang!");
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         MagicCube magicCube = other.GetComponent<MagicCube>();

@@ -163,6 +163,16 @@ namespace StarterAssets
 
             inputActions["Aim"].started += AimStarted;
             inputActions["Aim"].canceled += AimEnded;
+
+            inputActions["Fire"].performed += FirePerformed;
+        }
+
+        private void FirePerformed(InputAction.CallbackContext context)
+        {
+            if (aiming)
+            {
+                GetComponent<Character>().Fire();
+            }
         }
 
         private void AimEnded(InputAction.CallbackContext context)
@@ -173,7 +183,8 @@ namespace StarterAssets
         private void EndAim()
         {
             aiming = false;
-            aimCamera.Priority = 1;
+            aimCamera.Priority = 1; 
+            _animator.SetBool("Aiming", aiming);
         }
 
         private void AimStarted(InputAction.CallbackContext obj)
@@ -186,6 +197,7 @@ namespace StarterAssets
         {
             aiming = true;
             aimCamera.Priority = 20;
+            _animator.SetBool("Aiming", aiming);
         }
 
         private void Update()
