@@ -1,4 +1,5 @@
-﻿using Fusion;
+﻿using Cinemachine;
+using Fusion;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
@@ -111,6 +112,10 @@ namespace StarterAssets
 
         private bool _hasAnimator;
 
+        public CinemachineVirtualCamera aimCamera;
+        public bool aiming;
+        public InputActionAsset inputActions;
+
         private bool IsCurrentDeviceMouse
         {
             get
@@ -131,6 +136,8 @@ namespace StarterAssets
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
+     
+            
         }
 
         private void Start()
@@ -151,22 +158,60 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+           // if (HasStateAuthority == false) { return; }
+
+            inputActions["Aim"].started += AimStarted;
+            inputActions["Aim"].canceled += AimEnded;
+        }
+
+        private void AimEnded(InputAction.CallbackContext context)
+        {
+            EndAim();
+        }
+
+        private void EndAim()
+        {
+            aiming = false;
+            aimCamera.Priority = 1;
+        }
+
+        private void AimStarted(InputAction.CallbackContext obj)
+        {
+            Debug.Log("Aim started!");
+            StartAim();
+        }
+
+        private void StartAim()
+        {
+            aiming = true;
+            aimCamera.Priority = 20;
         }
 
         private void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-            if (HasStateAuthority == false) { return; }
+           // if (HasStateAuthority == false ) { return; }
             JumpAndGravity();
             GroundedCheck();
             Move();
+            RotateWithAiming();
         }
 
         private void LateUpdate()
         {
-            if (HasStateAuthority == false) { return; }
+        //    if (HasStateAuthority == false) { return; }
             CameraRotation();
+        }
+
+        private void RotateWithAiming()
+        {
+            if(aiming == false) { return; }
+
+            transform.rotation = Quaternion.Euler(0,  _mainCamera.transform.rotation.eulerAngles.y, 0);
+           
+            // transform.GetChild(1).forward = _mainCamera.transform.forward;
         }
 
         private void AssignAnimationIDs()
@@ -264,7 +309,11 @@ namespace StarterAssets
                     RotationSmoothTime);
 
                 // rotate to face input direction relative to camera position
-                transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                if (aiming == false)
+                {
+
+                    transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                }
             }
 
 
