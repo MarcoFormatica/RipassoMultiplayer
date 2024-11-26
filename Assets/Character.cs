@@ -2,15 +2,33 @@ using Fusion;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Character : NetworkBehaviour
 {
+
+    [Networked, OnChangedRender(nameof(OnHpChanged))]
+    public int Hp { get; set; }
+
+    [Networked]
+    public int HpMax { get; set; }
+
+    public TextMeshPro textHp;
+
     internal void Fire(Ray ray)
     {
-       
+        RaycastHit raycastHit;
+        if(Physics.Raycast(ray, out raycastHit))
+        {
+            if (raycastHit.collider.gameObject.GetComponent<Character>())
+            {
+                Destroy(raycastHit.collider.gameObject);    
+            }
+        }
 
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -26,5 +44,17 @@ public class Character : NetworkBehaviour
                 magicCube.gameObject.SetActive(false);
             }
         }
+    }
+
+    public override void Spawned()
+    {
+        base.Spawned();
+        OnHpChanged();
+    }
+
+
+    public void OnHpChanged()
+    {
+        textHp.text = Hp.ToString() + " / " + HpMax.ToString();
     }
 }
