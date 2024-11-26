@@ -6,9 +6,10 @@ using UnityEngine;
 
 public class Character : NetworkBehaviour
 {
-    internal void Fire()
+    internal void Fire(Ray ray)
     {
-        Debug.Log("Bang!");
+       
+
     }
 
     private void OnTriggerEnter(Collider other)
