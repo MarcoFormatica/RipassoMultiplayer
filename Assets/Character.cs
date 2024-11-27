@@ -23,20 +23,7 @@ public class Character : NetworkBehaviour
     public UnityEvent OnCharacterDeath;
 
 
-    internal void Fire(Ray ray)
-    {
-        RaycastHit raycastHit;
-        if(Physics.Raycast(ray, out raycastHit))
-        {
-            Character hitCharacter = raycastHit.collider.gameObject.GetComponent<Character>();
-            if (hitCharacter!=null)
-            {
-                hitCharacter.RPC_InflictDamage(10);
-                hitCharacter.HpChangedCallback(hitCharacter.Hp - 10);
-            }
-        }
 
-    }
 
 
     private void OnTriggerEnter(Collider other)
@@ -68,7 +55,7 @@ public class Character : NetworkBehaviour
         HpChangedCallback(Hp);
     }
 
-    private void HpChangedCallback(int hp)
+    public void HpChangedCallback(int hp)
     {
         if (hp <= 0)
         {
@@ -86,5 +73,23 @@ public class Character : NetworkBehaviour
     {
         Debug.Log(nameof(RPC_InflictDamage) + " CALLED");
         Hp = Hp - damage;
+    }
+
+    internal void CharacterFire(Ray ray)
+    {
+        RPC_WeaponAestheticShoot();
+        GetHeldWeapon().OnWeaponShoot.Invoke(ray);
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    internal void RPC_WeaponAestheticShoot()
+    {
+        // GetHeldWeapon().OnWeaponShoot.Invoke(ray);
+        GetHeldWeapon().WeaponPlaySound();
+    }
+
+    public Weapon GetHeldWeapon()
+    {
+        return GetComponentInChildren<Weapon>();
     }
 }

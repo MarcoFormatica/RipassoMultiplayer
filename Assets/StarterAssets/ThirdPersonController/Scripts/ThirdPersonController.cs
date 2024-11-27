@@ -189,7 +189,7 @@ namespace StarterAssets
         {
             if (aiming)
             {
-                GetComponent<Character>().Fire(new Ray(_mainCamera.transform.position,_mainCamera.transform.forward));
+                GetComponent<Character>().CharacterFire(new Ray(_mainCamera.transform.position,_mainCamera.transform.forward));
             }
         }
 
