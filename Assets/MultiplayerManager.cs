@@ -1,6 +1,7 @@
 using Cinemachine;
 using Fusion;
 using Fusion.Sockets;
+using StarterAssets;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
     public NetworkObject magicCubePrefab;
 
     public CinemachineVirtualCamera followCamera;
+    public CinemachineVirtualCamera aimCamera;
+
     public NetworkRunner networkRunner;
 
     public void OnConnectedToServer(NetworkRunner runner)
@@ -39,6 +42,8 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
     {
         NetworkObject player = runner.Spawn(playerPrefab,transform.position,transform.rotation);
         followCamera.Follow = player.gameObject.GetComponentInChildren<PlayerCameraRoot>().gameObject.transform;
+        aimCamera.Follow = player.gameObject.GetComponentInChildren<PlayerCameraRoot>().gameObject.transform;
+        player.gameObject.GetComponent<ThirdPersonController>().aimCamera = aimCamera;
     }
 
     public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason)
