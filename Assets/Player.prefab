@@ -769,7 +769,7 @@ MonoBehaviour:
   TotalWords: 4
   ApplyTiming: 2
   SyncSettings: 79
-  StateHashes: 0000000084ca1cc0f9c6230b1c6a54339e2518b671a7e1076b36dbedb1afdc305a6c54cdc01206a9d004826b163aa441ed39c25d
+  StateHashes: 0000000084ca1cc0f9c6230b1c6a54339e2518b671a7e1076b36dbedb1afdc305a6c54cdffa4c8127deb8497c01206a9d004826b163aa441ed39c25d
   TriggerHashes: 00000000
 --- !u!114 &4957661395953337232
 MonoBehaviour:
@@ -786,6 +786,9 @@ MonoBehaviour:
   _Hp: 100
   _HpMax: 100
   textHp: {fileID: 1292380079587776238}
+  OnCharacterDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1582542451057040849
 GameObject:
   m_ObjectHideFlags: 0
