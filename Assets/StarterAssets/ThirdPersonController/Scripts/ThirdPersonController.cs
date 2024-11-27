@@ -179,7 +179,6 @@ namespace StarterAssets
         {
             EndAim();
             inputActions.actionMaps[0].Disable();
-            _animator.applyRootMotion = true;
             _animator.SetBool("Dead", true);
         }
 
