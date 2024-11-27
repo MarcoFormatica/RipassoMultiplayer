@@ -216,6 +216,7 @@ MonoBehaviour:
   magicCubePrefab: {fileID: 6674071088244382466, guid: 287cc79b73a423741bca7f07a5cc8e61,
     type: 3}
   followCamera: {fileID: 394559363}
+  aimCamera: {fileID: 872116786}
   networkRunner: {fileID: 223914657}
 --- !u!4 &223914659
 Transform:
@@ -495,6 +496,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+--- !u!114 &872116786 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2070925441746177913, guid: a1a802ecaf6775746bb2a929fb554ad8,
+    type: 3}
+  m_PrefabInstance: {fileID: 239136734}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &874605735
 GameObject:
   m_ObjectHideFlags: 0
