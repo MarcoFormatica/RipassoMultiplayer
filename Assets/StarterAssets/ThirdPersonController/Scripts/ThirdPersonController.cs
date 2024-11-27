@@ -116,6 +116,12 @@ namespace StarterAssets
         public bool aiming;
         public InputActionAsset inputActions;
 
+
+        public bool IsDead()
+        {
+            return GetComponent<Character>().Hp <= 0;
+        }
+
         private bool IsCurrentDeviceMouse
         {
             get
@@ -161,10 +167,19 @@ namespace StarterAssets
 
             if (HasStateAuthority == false) { return; }
 
+            GetComponent<Character>().OnCharacterDeath.AddListener(OnCharacterDeathCallback);
+
             inputActions["Aim"].started += AimStarted;
             inputActions["Aim"].canceled += AimEnded;
 
             inputActions["Fire"].performed += FirePerformed;
+        }
+
+        private void OnCharacterDeathCallback()
+        {
+            EndAim();
+            inputActions.actionMaps[0].Disable();
+            _animator.SetBool("Dead", true);
         }
 
         private void FirePerformed(InputAction.CallbackContext context)

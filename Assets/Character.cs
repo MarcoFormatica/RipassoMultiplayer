@@ -4,9 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Character : NetworkBehaviour
 {
+
 
     [Networked, OnChangedRender(nameof(OnHpChanged))]
     public int Hp { get; set; }
@@ -14,7 +16,11 @@ public class Character : NetworkBehaviour
     [Networked]
     public int HpMax { get; set; }
 
+
+
     public TextMeshPro textHp;
+
+    public UnityEvent OnCharacterDeath;
 
 
     internal void Fire(Ray ray)
