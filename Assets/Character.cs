@@ -26,6 +26,7 @@ public class Character : NetworkBehaviour
             if (hitCharacter!=null)
             {
                 hitCharacter.RPC_InflictDamage(10);
+                hitCharacter.RefreshHpText(hitCharacter.Hp - 10);
             }
         }
 
@@ -57,13 +58,18 @@ public class Character : NetworkBehaviour
 
     public void OnHpChanged()
     {
-        if (Hp < 0)
+        RefreshHpText(Hp);
+    }
+
+    private void RefreshHpText(int displayedHp)
+    {
+        if (displayedHp <= 0)
         {
             textHp.text = "Morto";
         }
         else
         {
-            textHp.text = Hp.ToString() + " / " + HpMax.ToString();
+            textHp.text = displayedHp.ToString() + " / " + HpMax.ToString();
         }
     }
 
