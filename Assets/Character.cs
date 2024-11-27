@@ -32,7 +32,7 @@ public class Character : NetworkBehaviour
             if (hitCharacter!=null)
             {
                 hitCharacter.RPC_InflictDamage(10);
-                hitCharacter.RefreshHpText(hitCharacter.Hp - 10);
+                hitCharacter.HpChangedCallback(hitCharacter.Hp - 10);
             }
         }
 
@@ -64,18 +64,19 @@ public class Character : NetworkBehaviour
 
     public void OnHpChanged()
     {
-        RefreshHpText(Hp);
+        HpChangedCallback(Hp);
     }
 
-    private void RefreshHpText(int displayedHp)
+    private void HpChangedCallback(int hp)
     {
-        if (displayedHp <= 0)
+        if (hp <= 0)
         {
             textHp.text = "Morto";
+            OnCharacterDeath.Invoke();
         }
         else
         {
-            textHp.text = displayedHp.ToString() + " / " + HpMax.ToString();
+            textHp.text = hp.ToString() + " / " + HpMax.ToString();
         }
     }
 
