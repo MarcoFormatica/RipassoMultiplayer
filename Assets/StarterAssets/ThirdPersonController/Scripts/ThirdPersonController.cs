@@ -142,13 +142,12 @@ namespace StarterAssets
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
-
-            if (HasStateAuthority == false) { return; }
-
-            GetComponent<Character>().OnCharacterDeath.AddListener(OnCharacterDeathCallback);
-
+     
+            
         }
 
+
+        
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
@@ -175,6 +174,8 @@ namespace StarterAssets
             inputActions["Aim"].canceled += AimEnded;
 
             inputActions["Fire"].performed += FirePerformed;
+
+            GetComponent<Character>().OnCharacterDeath.AddListener(OnCharacterDeathCallback);
         }
 
         private void OnCharacterDeathCallback()

@@ -58,6 +58,7 @@ public class Character : NetworkBehaviour
     public override void Spawned()
     {
         base.Spawned();
+
         OnHpChanged();
     }
 
