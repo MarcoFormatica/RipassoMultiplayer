@@ -78,14 +78,15 @@ public class Character : NetworkBehaviour
     internal void CharacterFire(Ray ray)
     {
         RPC_WeaponAestheticShoot();
+
         GetHeldWeapon().OnWeaponShoot.Invoke(ray);
     }
 
     [Rpc(RpcSources.All, RpcTargets.All)]
     internal void RPC_WeaponAestheticShoot()
     {
-        // GetHeldWeapon().OnWeaponShoot.Invoke(ray);
         GetHeldWeapon().WeaponPlaySound();
+        GetHeldWeapon().WeaponPlayParticleEffect();
     }
 
     public Weapon GetHeldWeapon()
