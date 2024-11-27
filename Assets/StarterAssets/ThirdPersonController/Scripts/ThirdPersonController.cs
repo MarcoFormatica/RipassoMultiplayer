@@ -159,7 +159,7 @@ namespace StarterAssets
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
 
-           // if (HasStateAuthority == false) { return; }
+            if (HasStateAuthority == false) { return; }
 
             inputActions["Aim"].started += AimStarted;
             inputActions["Aim"].canceled += AimEnded;
@@ -204,7 +204,7 @@ namespace StarterAssets
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-           // if (HasStateAuthority == false ) { return; }
+            if (HasStateAuthority == false ) { return; }
             JumpAndGravity();
             GroundedCheck();
             Move();
@@ -213,7 +213,7 @@ namespace StarterAssets
 
         private void LateUpdate()
         {
-        //    if (HasStateAuthority == false) { return; }
+            if (HasStateAuthority == false) { return; }
             CameraRotation();
         }
 

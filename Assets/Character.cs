@@ -16,14 +16,16 @@ public class Character : NetworkBehaviour
 
     public TextMeshPro textHp;
 
+
     internal void Fire(Ray ray)
     {
         RaycastHit raycastHit;
         if(Physics.Raycast(ray, out raycastHit))
         {
-            if (raycastHit.collider.gameObject.GetComponent<Character>())
+            Character hitCharacter = raycastHit.collider.gameObject.GetComponent<Character>();
+            if (hitCharacter!=null)
             {
-                Destroy(raycastHit.collider.gameObject);    
+                hitCharacter.RPC_InflictDamage(10);
             }
         }
 
@@ -55,6 +57,20 @@ public class Character : NetworkBehaviour
 
     public void OnHpChanged()
     {
-        textHp.text = Hp.ToString() + " / " + HpMax.ToString();
+        if (Hp < 0)
+        {
+            textHp.text = "Morto";
+        }
+        else
+        {
+            textHp.text = Hp.ToString() + " / " + HpMax.ToString();
+        }
+    }
+
+    [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
+    public void RPC_InflictDamage(int damage)
+    {
+        Debug.Log(nameof(RPC_InflictDamage) + " CALLED");
+        Hp = Hp - damage;
     }
 }
