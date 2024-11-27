@@ -71,7 +71,7 @@ public class Character : NetworkBehaviour
     {
         if (hp <= 0)
         {
-            textHp.text = "Morto";
+            textHp.text = "";
             OnCharacterDeath.Invoke();
         }
         else
