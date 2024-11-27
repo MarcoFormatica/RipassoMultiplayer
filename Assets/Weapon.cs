@@ -8,7 +8,14 @@ public class Weapon : MonoBehaviour
     public UnityEvent<Ray> OnWeaponShoot;
     public int minDamage;
     public int maxDamage;
-    
+    public void WeaponPlayParticleEffect()
+    {
+        foreach(ParticleSystem ps in GetComponentsInChildren<ParticleSystem>())
+        {
+            ps.Play();
+        }
+    }
+
     public int GetRandomDamage()
     {
         return Random.Range(minDamage, maxDamage+1);
