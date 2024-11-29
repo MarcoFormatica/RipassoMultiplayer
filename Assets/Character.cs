@@ -37,12 +37,7 @@ public class Character : NetworkBehaviour
     }
     public void OnTeamChanged()
     {
-        textName.color = TeamToColor(Team);
-    }
-
-    private Color TeamToColor(ETeam team)
-    {
-        return team == ETeam.Blue ? Color.blue : Color.red;
+        textName.color = PlayerConfig.TeamToColor(Team);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -5,17 +5,21 @@ using StarterAssets;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
 {
     public NetworkObject playerPrefab;
-    public NetworkObject magicCubePrefab;
+    public NetworkObject roomManagerPrefab;
 
     public CinemachineVirtualCamera followCamera;
     public CinemachineVirtualCamera aimCamera;
 
     public NetworkRunner networkRunner;
+
+    public TextMeshProUGUI winnerText;
+    public TextMeshProUGUI timeText;
 
     public void OnConnectedToServer(NetworkRunner runner)
     {
@@ -23,20 +27,11 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
 
         if (runner.IsSharedModeMasterClient) 
         {
-            Debug.Log("Spawning Magic Cubes!");
-            SpawnMagicCubes(runner);
+            NetworkObject roomManager = runner.Spawn(roomManagerPrefab, transform.position, transform.rotation);
         }
     }
 
-    private void SpawnMagicCubes(NetworkRunner runner)
-    {
-        foreach (CubeSpawnPoint cubeSpawnPoint in FindObjectsOfType<CubeSpawnPoint>()) 
-        { 
-          var cube =  runner.Spawn(magicCubePrefab,cubeSpawnPoint.gameObject.transform.position,cubeSpawnPoint.gameObject.transform.rotation);
-          cube.transform.position = cubeSpawnPoint.transform.position;
-            Debug.Log("Spawned1");
-        }
-    }
+
 
     private void SpawnLocalPlayer(NetworkRunner runner)
     {

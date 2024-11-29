@@ -15,6 +15,13 @@ public class PlayerConfig
 {
     public static string playerName;
     public static ETeam team;
+
+
+    public static Color TeamToColor(ETeam team)
+    {
+        return team == ETeam.Blue ? Color.blue : Color.red;
+    }
+
 }
 
 public class StartGameController : MonoBehaviour
