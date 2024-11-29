@@ -14,6 +14,7 @@ public enum ETeam
 
 public enum EClass
 {
+    None,
     Sniper,
     Engineer,
     BomberMan,
@@ -61,7 +62,7 @@ public class StartGameController : MonoBehaviour
 
     public void StartGame()
     {
-        PlayerConfig.playerClass = (EClass) classDropdown.value;
+        PlayerConfig.playerClass = (EClass) classDropdown.value+1;
         PlayerConfig.playerName = nameInputField.text;
         if (PlayerConfig.playerName == "") { PlayerConfig.playerName = "Player "+ System.Guid.NewGuid().ToString().Split("-")[0]; }
         SceneManager.LoadScene(1);

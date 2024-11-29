@@ -1254,7 +1254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameInputField: {fileID: 691606002}
-  classDropdown: {fileID: 0}
+  classDropdown: {fileID: 1821509337}
   startGameButtonRed: {fileID: 1746790599}
   startGameButtonBlue: {fileID: 496785344}
 --- !u!4 &784313326

@@ -40,7 +40,13 @@ public class Character : NetworkBehaviour
     }
     public void OnPlayerClassChanged()
     {
-
+        foreach(PlayerClassSelector pcs in GetComponentsInChildren<PlayerClassSelector>())
+        {
+            if(pcs.associatedClass != PlayerClass)
+            {
+                Destroy(pcs.gameObject);
+            }
+        }
     }
     public void OnTeamChanged()
     {
@@ -70,6 +76,7 @@ public class Character : NetworkBehaviour
         {
             Team = PlayerConfig.team;
             PlayerName = PlayerConfig.playerName;
+            PlayerClass = PlayerConfig.playerClass;
         }
         
 
