@@ -8,10 +8,22 @@ public class Weapon : MonoBehaviour
     public UnityEvent<Ray> OnWeaponShoot;
     public int minDamage;
     public int maxDamage;
-    public void WeaponPlayParticleEffect()
+
+
+    private void Awake()
     {
-        foreach(ParticleSystem ps in GetComponentsInChildren<ParticleSystem>())
+
+    }
+    public void WeaponPlayParticleEffect(Vector3 hitPoint)
+    {
+
+        foreach (ParticleSystem ps in GetComponentsInChildren<ParticleSystem>())
         {
+            if(hitPoint != Vector3.zero)
+            {
+
+                ps.transform.forward = (hitPoint - ps.transform.position);
+            }
             ps.Play();
         }
     }

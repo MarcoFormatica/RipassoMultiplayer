@@ -77,16 +77,23 @@ public class Character : NetworkBehaviour
 
     internal void CharacterFire(Ray ray)
     {
-        RPC_WeaponAestheticShoot();
+
+        RaycastHit raycastHit;
+        Vector3 hitPoint = Vector3.zero;
+        if (Physics.Raycast(ray, out raycastHit))
+        {
+            hitPoint= raycastHit.point;
+        }
+        RPC_WeaponAestheticShoot(hitPoint);
 
         GetHeldWeapon().OnWeaponShoot.Invoke(ray);
     }
 
     [Rpc(RpcSources.All, RpcTargets.All)]
-    internal void RPC_WeaponAestheticShoot()
+    internal void RPC_WeaponAestheticShoot(Vector3 hitPoint)
     {
         GetHeldWeapon().WeaponPlaySound();
-        GetHeldWeapon().WeaponPlayParticleEffect();
+        GetHeldWeapon().WeaponPlayParticleEffect(hitPoint);
     }
 
     public Weapon GetHeldWeapon()
