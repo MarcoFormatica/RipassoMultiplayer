@@ -13,7 +13,7 @@ public enum ETeam
 
 public class PlayerConfig
 {
-    public static string username;
+    public static string playerName;
     public static ETeam team;
 }
 
@@ -42,8 +42,8 @@ public class StartGameController : MonoBehaviour
 
     public void StartGame()
     {
-        PlayerConfig.username = nameInputField.text;
-        if (PlayerConfig.username == "") { PlayerConfig.username = "Player "+ System.Guid.NewGuid().ToString().Split("-")[0]; }
+        PlayerConfig.playerName = nameInputField.text;
+        if (PlayerConfig.playerName == "") { PlayerConfig.playerName = "Player "+ System.Guid.NewGuid().ToString().Split("-")[0]; }
         SceneManager.LoadScene(1);
     }
 

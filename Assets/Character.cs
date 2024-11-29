@@ -16,15 +16,34 @@ public class Character : NetworkBehaviour
     [Networked]
     public int HpMax { get; set; }
 
+    [Networked, OnChangedRender(nameof(OnPlayerNameChanged))]
+    public NetworkString<_32> PlayerName { get; set; }
+
+ 
+
+    [Networked, OnChangedRender(nameof(OnTeamChanged))]
+    public ETeam Team { get; set; }
 
 
     public TextMeshPro textHp;
+    public TextMeshPro textName;
 
     public UnityEvent OnCharacterDeath;
 
 
+    public void OnPlayerNameChanged()
+    {
+        textName.text = PlayerName.Value;
+    }
+    public void OnTeamChanged()
+    {
+        textName.color = TeamToColor(Team);
+    }
 
-
+    private Color TeamToColor(ETeam team)
+    {
+        return team == ETeam.Blue ? Color.blue : Color.red;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -45,8 +64,17 @@ public class Character : NetworkBehaviour
     public override void Spawned()
     {
         base.Spawned();
+        if (HasStateAuthority)
+        {
+            Team = PlayerConfig.team;
+            PlayerName = PlayerConfig.playerName;
+        }
+        
 
         OnHpChanged();
+        OnTeamChanged();
+        OnPlayerNameChanged();
+
     }
 
 
