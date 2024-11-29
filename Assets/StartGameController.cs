@@ -7,14 +7,25 @@ using UnityEngine.UI;
 
 public enum ETeam
 {
+    None,
     Blue,
     Red
+}
+
+public enum EClass
+{
+    Sniper,
+    Engineer,
+    BomberMan,
+    Healer
+
 }
 
 public class PlayerConfig
 {
     public static string playerName;
     public static ETeam team;
+    public static EClass playerClass;
 
 
     public static Color TeamToColor(ETeam team)
@@ -27,6 +38,7 @@ public class PlayerConfig
 public class StartGameController : MonoBehaviour
 {
     public TMP_InputField nameInputField;
+    public TMP_Dropdown classDropdown;
     public Button startGameButtonRed;
     public Button startGameButtonBlue;
 
@@ -49,6 +61,7 @@ public class StartGameController : MonoBehaviour
 
     public void StartGame()
     {
+        PlayerConfig.playerClass = (EClass) classDropdown.value;
         PlayerConfig.playerName = nameInputField.text;
         if (PlayerConfig.playerName == "") { PlayerConfig.playerName = "Player "+ System.Guid.NewGuid().ToString().Split("-")[0]; }
         SceneManager.LoadScene(1);

@@ -24,6 +24,9 @@ public class Character : NetworkBehaviour
     [Networked, OnChangedRender(nameof(OnTeamChanged))]
     public ETeam Team { get; set; }
 
+    [Networked, OnChangedRender(nameof(OnPlayerClassChanged))]
+    public EClass PlayerClass { get; set; }
+
 
     public TextMeshPro textHp;
     public TextMeshPro textName;
@@ -34,6 +37,10 @@ public class Character : NetworkBehaviour
     public void OnPlayerNameChanged()
     {
         textName.text = PlayerName.Value;
+    }
+    public void OnPlayerClassChanged()
+    {
+
     }
     public void OnTeamChanged()
     {

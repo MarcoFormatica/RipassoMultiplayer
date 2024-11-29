@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoomManager : NetworkBehaviour
 {
@@ -29,7 +30,14 @@ public class RoomManager : NetworkBehaviour
             {
                 thirdPersonController.enabled = false;
             }
+
+            Invoke(nameof(ReturnToMainScreen), 5);
         }
+    }
+
+    public void ReturnToMainScreen()
+    {
+        SceneManager.LoadScene(0);
     }
 
     private void Awake()
@@ -71,11 +79,18 @@ public class RoomManager : NetworkBehaviour
 
     private void ElectWinner()
     {
-        List<Character> characterList = new List<Character>(FindObjectsOfType<Character>());    
+        string winnerTeam = ExtractWinner().ToString();
+        WinnerText = winnerTeam + " Team Wins";
+    }
+
+    public static ETeam ExtractWinner()
+    {
+        List<Character> characterList = new List<Character>(FindObjectsOfType<Character>());
         List<Character> aliveCharacters = characterList.FindAll(x => x.Hp > 0);
         int aliveRedNumber = aliveCharacters.FindAll(x => x.Team == ETeam.Red).Count;
         int aliveBlueNumber = aliveCharacters.FindAll(x => x.Team == ETeam.Blue).Count;
-        string winnerTeam = (aliveRedNumber > aliveBlueNumber) ? "Red" : "Blue";
-        WinnerText = winnerTeam + " Team Wins";
+
+        ETeam winnerTeam = (aliveRedNumber > aliveBlueNumber) ? ETeam.Red : ETeam.Blue;
+        return winnerTeam;
     }
 }
