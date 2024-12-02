@@ -957,6 +957,7 @@ MonoBehaviour:
   - {fileID: 3533973015480320861}
   - {fileID: 4957661395953337232}
   - {fileID: 1771428705418396300}
+  - {fileID: 2472980999425561160}
 --- !u!114 &17466770603016140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1920,6 +1921,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6899300402905582991}
   - component: {fileID: 5206356703615170500}
+  - component: {fileID: 2472980999425561160}
   m_Layer: 3
   m_Name: EngineerGeometry
   m_TagString: Untagged
@@ -1956,6 +1958,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   associatedClass: 2
+--- !u!114 &2472980999425561160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3821077704178528664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 504e78f726ba9ad40812fcabc914114a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minePrefab: {fileID: 6019588043429508551, guid: 4d5ff1d5a93a9b74f9324aa1f7c028e5,
+    type: 3}
 --- !u!1 &3921187973798789336
 GameObject:
   m_ObjectHideFlags: 0
@@ -3691,8 +3707,8 @@ MonoBehaviour:
   OnWeaponShoot:
     m_PersistentCalls:
       m_Calls: []
-  minDamage: 10
-  maxDamage: 20
+  minDamage: 5
+  maxDamage: 10
 --- !u!82 &5798258551106502957
 AudioSource:
   m_ObjectHideFlags: 0
