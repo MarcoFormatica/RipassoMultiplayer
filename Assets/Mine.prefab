@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6019588043429508551}
   - component: {fileID: 4713155597397359011}
   - component: {fileID: 9217927402348222933}
+  - component: {fileID: 938219118906757468}
   m_Layer: 0
   m_Name: Mine
   m_TagString: Untagged
@@ -129,6 +130,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 4713155597397359011}
+  - {fileID: 938219118906757468}
 --- !u!114 &4713155597397359011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +242,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &938219118906757468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4748048425188381657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 1
 --- !u!1001 &5653286453308247178
 PrefabInstance:
   m_ObjectHideFlags: 0
