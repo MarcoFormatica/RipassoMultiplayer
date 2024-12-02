@@ -13,7 +13,7 @@ public class Engineer : NetworkBehaviour
         base.Spawned();
         if (HasStateAuthority)
         {
-            if (PlayerConfig.playerClass == EClass.Sniper)
+            if (PlayerConfig.playerClass == EClass.Engineer)
             {
 
                 GetComponentInParent<Character>().OnSpecialPowerActivate.AddListener(EngineerSpecialPower);
