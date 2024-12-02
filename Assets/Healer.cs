@@ -15,7 +15,7 @@ public class Healer : NetworkBehaviour
             {
 
                 GetComponentInParent<Character>().OnSpecialPowerActivate.AddListener(HealerSpecialPower);
-                GetComponentInParent<Character>().InitializeSpecialPower(2);
+                GetComponentInParent<Character>().InitializeSpecialPower(1);
             }
         }
     }
@@ -30,7 +30,7 @@ public class Healer : NetworkBehaviour
                 if (character.Team == GetComponentInParent<Character>().Team && character.Hp > 0)
                 {
 
-                    character.RPC_InflictDamage(-10);
+                    character.RPC_InflictDamage(-20);
                 }
             }
 
