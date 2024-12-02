@@ -25,6 +25,6 @@ public class Engineer : NetworkBehaviour
     private void EngineerSpecialPower()
     {
       NetworkObject mineGO =   Runner.Spawn(minePrefab, transform.position, Quaternion.identity);
-        mineGO.GetComponent<Mine>().MineTeam = GetComponentInParent<Character>().Team;
+      mineGO.GetComponent<Mine>().MineTeam = GetComponentInParent<Character>().Team;
     }
 }

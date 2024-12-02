@@ -5,10 +5,23 @@ using UnityEngine;
 
 public class Mine : NetworkBehaviour
 {
-    [Networked]
+    [Networked, OnChangedRender(nameof(OnTeamMineChanged))]
     public ETeam MineTeam { get; set; }
+
+    public GameObject explosionPrefab;
     public int minDamage;
     public int maxDamage;
+
+    public override void Spawned()
+    {
+        base.Spawned();
+        OnTeamMineChanged();
+    }
+
+    public void OnTeamMineChanged()
+    {
+        GetComponent<MeshRenderer>().material.color = PlayerConfig.TeamToColor(MineTeam);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,8 +33,8 @@ public class Mine : NetworkBehaviour
         if(enteredCharacter.Team != MineTeam ) 
         {
             enteredCharacter.RPC_InflictDamage(Random.Range(minDamage, maxDamage));
-            RPC_DestroyMine();
             RPC_PerformExplosionEffects();
+            RPC_DestroyMine();
         }
     }
 
@@ -35,11 +48,14 @@ public class Mine : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_PerformExplosionEffects()
     {
-        foreach (ParticleSystem ps in GetComponentsInChildren<ParticleSystem>())
+        GameObject explosionGO = Instantiate(explosionPrefab,transform.position,Quaternion.identity);
+
+        foreach (ParticleSystem ps in explosionGO.GetComponentsInChildren<ParticleSystem>())
         {
             ps.Play();
         }
-        GetComponent<AudioSource>()?.Play();
+
+        Destroy(explosionGO, 5);
 
     }
 }
