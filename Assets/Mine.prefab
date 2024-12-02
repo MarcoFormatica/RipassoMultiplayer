@@ -142,7 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _MineTeam: 0
-  explosionPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 5604747442291076710, guid: fe4182eed8f1cce4191fba44f94ab33f,
+    type: 3}
   minDamage: 40
   maxDamage: 80
 --- !u!114 &938219118906757468
