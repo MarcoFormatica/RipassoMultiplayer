@@ -32,7 +32,9 @@ public class Mine : NetworkBehaviour
         Character enteredCharacter = other.GetComponent<Character>();
         if(enteredCharacter.Team != MineTeam ) 
         {
-            enteredCharacter.RPC_InflictDamage(Random.Range(minDamage, maxDamage));
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            int damage = Random.Range(minDamage, maxDamage);
+            enteredCharacter.RPC_InflictDamage(damage);
             RPC_PerformExplosionEffects();
             RPC_DestroyMine();
         }
