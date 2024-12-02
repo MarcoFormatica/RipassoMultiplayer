@@ -25,10 +25,15 @@ public class Healer : NetworkBehaviour
         foreach(Collider collider in Physics.OverlapSphere(transform.position, 2))
         {
             Character character = collider.gameObject.GetComponent<Character>();
-            if (character.Team == GetComponentInParent<Character>().Team && character.Hp > 0) {
+            if (character != null)
+            {
+                if (character.Team == GetComponentInParent<Character>().Team && character.Hp > 0)
+                {
 
-                character.RPC_InflictDamage(-10);
+                    character.RPC_InflictDamage(-10);
+                }
             }
+
             
         }
     }
