@@ -30,7 +30,7 @@ public class Mine : NetworkBehaviour
             return;
         }
         Character enteredCharacter = other.GetComponent<Character>();
-        if(enteredCharacter.Team != MineTeam ) 
+        if(enteredCharacter.Team != MineTeam && enteredCharacter.Hp>0) 
         {
             gameObject.GetComponent<MeshRenderer>().enabled = false;
             int damage = Random.Range(minDamage, maxDamage);
