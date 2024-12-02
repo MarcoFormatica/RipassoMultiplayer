@@ -174,8 +174,14 @@ namespace StarterAssets
             inputActions["Aim"].canceled += AimEnded;
 
             inputActions["Fire"].performed += FirePerformed;
+            inputActions["SpecialPower"].performed += SpecialPowerPerformed;
 
             GetComponent<Character>().OnCharacterDeath.AddListener(OnCharacterDeathCallback);
+        }
+
+        private void SpecialPowerPerformed(InputAction.CallbackContext context)
+        {
+            GetComponent<Character>().SpecialPowerRequest();
         }
 
         private void OnCharacterDeathCallback()

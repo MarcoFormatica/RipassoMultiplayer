@@ -956,6 +956,7 @@ MonoBehaviour:
   - {fileID: 17466770603016140}
   - {fileID: 3533973015480320861}
   - {fileID: 4957661395953337232}
+  - {fileID: 1771428705418396300}
 --- !u!114 &17466770603016140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1013,6 +1014,12 @@ MonoBehaviour:
   textHp: {fileID: 1292380079587776238}
   textName: {fileID: 6051782208681877920}
   OnCharacterDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  currentSpecialPowerAmount: 0
+  maxSpecialPowerAmount: 20
+  specialPowerBar: {fileID: 0}
+  OnSpecialPowerActivate:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1582542451057040849
@@ -1790,6 +1797,7 @@ GameObject:
   m_Component:
   - component: {fileID: 179578815970160140}
   - component: {fileID: 1943356056761678808}
+  - component: {fileID: 1771428705418396300}
   m_Layer: 3
   m_Name: SniperGeometry
   m_TagString: Untagged
@@ -1826,6 +1834,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   associatedClass: 1
+--- !u!114 &1771428705418396300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3656285433025961822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730d2463a3b86e64c849f84a1ec01029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3717187061940076298
 GameObject:
   m_ObjectHideFlags: 0

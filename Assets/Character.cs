@@ -1,4 +1,5 @@
 using Fusion;
+using Microlight.MicroBar;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -32,7 +33,10 @@ public class Character : NetworkBehaviour
     public TextMeshPro textName;
 
     public UnityEvent OnCharacterDeath;
-
+    public float currentSpecialPowerAmount;
+    public float maxSpecialPowerAmount;
+    public MicroBar specialPowerBar;
+    public UnityEvent OnSpecialPowerActivate;
 
     public void OnPlayerNameChanged()
     {
@@ -77,6 +81,10 @@ public class Character : NetworkBehaviour
             Team = PlayerConfig.team;
             PlayerName = PlayerConfig.playerName;
             PlayerClass = PlayerConfig.playerClass;
+
+
+
+
         }
         
 
@@ -86,6 +94,27 @@ public class Character : NetworkBehaviour
 
     }
 
+    private void Awake()
+    {
+    }
+
+    IEnumerator FillSpecialPower()
+    {
+        while (Hp > 0)
+        {
+            currentSpecialPowerAmount = currentSpecialPowerAmount + Time.deltaTime;
+            currentSpecialPowerAmount = Mathf.Clamp(currentSpecialPowerAmount, 0, maxSpecialPowerAmount);
+            RefreshSpecialPowerBar();
+            yield return null;
+        }
+    }
+
+    private void RefreshSpecialPowerBar()
+    {
+
+
+        specialPowerBar.UpdateBar(currentSpecialPowerAmount);
+    }
 
     public void OnHpChanged()
     {
@@ -136,5 +165,23 @@ public class Character : NetworkBehaviour
     public Weapon GetHeldWeapon()
     {
         return GetComponentInChildren<Weapon>();
+    }
+
+    internal void SpecialPowerRequest()
+    {
+      
+        if(currentSpecialPowerAmount == maxSpecialPowerAmount)
+        {
+            currentSpecialPowerAmount = 0;
+            OnSpecialPowerActivate.Invoke();
+        }
+    }
+
+    internal void InitializeSpecialPower(float v)
+    {
+        maxSpecialPowerAmount = v;
+        specialPowerBar = FindObjectOfType<SpecialPowerBar>().GetComponent<MicroBar>();
+        specialPowerBar.Initialize(maxSpecialPowerAmount);
+        StartCoroutine(FillSpecialPower());
     }
 }
