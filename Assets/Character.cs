@@ -138,7 +138,8 @@ public class Character : NetworkBehaviour
     public void RPC_InflictDamage(int damage)
     {
         Debug.Log(nameof(RPC_InflictDamage) + " CALLED");
-        Hp = Hp - damage;
+        Hp = Mathf.Clamp(Hp - damage,0,HpMax);
+        
     }
 
     internal void CharacterFire(Ray ray)
