@@ -13,7 +13,7 @@ public class Summoner :   NetworkBehaviour
         if (HasStateAuthority)
         {
 
-            if (PlayerConfig.playerClass == EClass.BomberMan)
+            if (PlayerConfig.playerClass == EClass.Summoner)
             {
 
                 GetComponentInParent<Character>().OnSpecialPowerActivate.AddListener(SummonerSpecialPower);
