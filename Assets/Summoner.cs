@@ -25,5 +25,6 @@ public class Summoner :   NetworkBehaviour
     private void SummonerSpecialPower()
     {
         NetworkObject creatureNO = Runner.Spawn(creaturePrefab, transform.position + transform.forward, Quaternion.identity);
+        creatureNO.GetComponent<Character>().Team = GetComponentInParent<Character>().Team;
     }
 }
