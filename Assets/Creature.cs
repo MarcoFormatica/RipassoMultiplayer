@@ -18,6 +18,7 @@ public class Creature : NetworkBehaviour
     {
         base.Spawned();
         InvokeRepeating(nameof(Attack), secondsBetweenAttacks, secondsBetweenAttacks);
+        navMeshAgent = GetComponent<NavMeshAgent>();
         if (HasStateAuthority)
         {
             GetComponent<Character>().OnCharacterDeath.AddListener(OnCharacterDeathCallback);
