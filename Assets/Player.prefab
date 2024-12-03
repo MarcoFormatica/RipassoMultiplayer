@@ -2915,7 +2915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff18a19add4b4df4fb955015a06d73af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  associatedClass: 2
+  associatedClass: 5
 --- !u!114 &6190865789899793350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2928,6 +2928,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6d3aedc1e4428459b056fff2d813c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  creaturePrefab: {fileID: 2614981571952976668, guid: 8e1a180683527ce44b51675de56203bd,
+    type: 3}
 --- !u!1 &6091116807355632123
 GameObject:
   m_ObjectHideFlags: 0
