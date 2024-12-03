@@ -1018,6 +1018,7 @@ MonoBehaviour:
   - {fileID: 3533973015480320861}
   - {fileID: 4957661395953337232}
   - {fileID: 1771428705418396300}
+  - {fileID: 1411576350331417794}
   - {fileID: 2472980999425561160}
   - {fileID: 3367716763575902740}
 --- !u!114 &17466770603016140
@@ -3146,6 +3147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 194e170471832c748a14d5a01f8f8225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalGranade: {fileID: 734765357511503383, guid: 6b34224df6952724d9d3f3e4187c9e2a,
+    type: 3}
+  specialGranade: {fileID: 734765357511503383, guid: 19ef680fdc427404787f6146da0001af,
+    type: 3}
 --- !u!1 &7243065978209705982
 GameObject:
   m_ObjectHideFlags: 0

@@ -125,7 +125,7 @@ MonoBehaviour:
   radius: 4
   minDamage: 30
   maxDamage: 40
-  explosionFxPrefab: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
+  explosionFxPrefab: {fileID: 1121192042590650, guid: 0cd0f675c50124142b11858c703fb3cd,
     type: 3}
 --- !u!54 &597004765379854563
 Rigidbody:
