@@ -121,6 +121,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca1fe37d45828da42b0d0cbcbbf36a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToLive: 3
+  radius: 2
+  minDamage: 20
+  maxDamage: 30
+  explosionFxPrefab: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
+    type: 3}
 --- !u!54 &597004765379854563
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -165,6 +171,7 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
+  - {fileID: 7828944223611414015}
   - {fileID: 5791177152486072223}
 --- !u!114 &5791177152486072223
 MonoBehaviour:
