@@ -18,7 +18,9 @@ public enum EClass
     Sniper,
     Engineer,
     BomberMan,
-    Healer
+    Healer,
+    Summoner,
+    Necromancer
 
 }
 
