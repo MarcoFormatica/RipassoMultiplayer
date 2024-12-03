@@ -347,10 +347,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817a7ccab1efcc04e973e8efe6634e88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsBetweenAttacks: 0
+  secondsBetweenAttacks: 0.5
   attackRadius: 0
-  minDamage: 0
-  maxDamage: 0
+  minDamage: 5
+  maxDamage: 20
   navMeshAgent: {fileID: 0}
   followingCharacter: {fileID: 0}
 --- !u!114 &1625190722121304956
