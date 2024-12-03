@@ -5136,7 +5136,7 @@ MonoBehaviour:
       m_Calls: []
   projectilePrefab: {fileID: 734765357511503383, guid: 6b34224df6952724d9d3f3e4187c9e2a,
     type: 3}
-  ejectionSpeed: 800
+  ejectionSpeed: 1200
 --- !u!4 &8682948623174972888 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eb1240280f981184fba348ea290defb9,
