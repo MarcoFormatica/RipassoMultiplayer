@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsBetweenAttacks: 0.5
-  attackRadius: 0
+  attackRadius: 1.5
   minDamage: 5
   maxDamage: 20
   navMeshAgent: {fileID: 0}
