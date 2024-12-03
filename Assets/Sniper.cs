@@ -23,15 +23,15 @@ public class Sniper : NetworkBehaviour
 
     private void SniperSpecialPower()
     {
-        GetComponentInParent<Character>().GetHeldWeapon().minDamage *= 3;
-        GetComponentInParent<Character>().GetHeldWeapon().maxDamage *= 5;
+        ((RaycastWeapon) GetComponentInParent<Character>().GetHeldWeapon()).minDamage *= 3;
+        ((RaycastWeapon)GetComponentInParent<Character>().GetHeldWeapon()).maxDamage *= 5;
         Invoke(nameof(RestoreWeaponNormalStat), 5);
     }
 
     public void RestoreWeaponNormalStat()
     {
-        GetComponentInParent<Character>().GetHeldWeapon().minDamage /= 3;
-        GetComponentInParent<Character>().GetHeldWeapon().maxDamage /= 5;
+        ((RaycastWeapon)GetComponentInParent<Character>().GetHeldWeapon()).minDamage /= 3;
+        ((RaycastWeapon)GetComponentInParent<Character>().GetHeldWeapon()).maxDamage /= 5;
 
     }
 
