@@ -21,7 +21,7 @@ public class Summoner :   NetworkBehaviour
             }
         }
     }
-
+    
     private void SummonerSpecialPower()
     {
         NetworkObject creatureNO = Runner.Spawn(creaturePrefab, transform.position + Camera.main.transform.forward, Quaternion.identity);

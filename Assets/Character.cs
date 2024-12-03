@@ -169,6 +169,13 @@ public class Character : NetworkBehaviour
         GetHeldWeapon().WeaponPlayParticleEffect(hitPoint);
     }
 
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    internal void RPC_Despawn()
+    {
+        Runner.Despawn(GetComponent<NetworkObject>());
+    }
+
     public Weapon GetHeldWeapon()
     {
         return GetComponentInChildren<Weapon>();
