@@ -1021,6 +1021,7 @@ MonoBehaviour:
   - {fileID: 1771428705418396300}
   - {fileID: 1411576350331417794}
   - {fileID: 2472980999425561160}
+  - {fileID: 6190865789899793350}
   - {fileID: 3367716763575902740}
 --- !u!114 &17466770603016140
 MonoBehaviour:
@@ -1087,6 +1088,7 @@ MonoBehaviour:
   OnSpecialPowerActivate:
     m_PersistentCalls:
       m_Calls: []
+  isAPlayer: 1
 --- !u!1 &1582542451057040849
 GameObject:
   m_ObjectHideFlags: 0
@@ -5314,7 +5316,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 01620ac2b82c2874d8b45cea19704d75, type: 2}
+      objectReference: {fileID: 2100000, guid: efafa54f854ed6d4f8611d8437a8dbcf, type: 2}
     - target: {fileID: 8504492581990896314, guid: eb1240280f981184fba348ea290defb9,
         type: 3}
       propertyPath: m_LocalScale.x

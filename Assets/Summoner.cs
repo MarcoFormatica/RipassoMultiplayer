@@ -1,18 +1,29 @@
+using Fusion;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Summoner : MonoBehaviour
+public class Summoner :   NetworkBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public NetworkObject creaturePrefab;
+    public override void Spawned()
     {
-        
+        base.Spawned();
+        if (HasStateAuthority)
+        {
+
+            if (PlayerConfig.playerClass == EClass.BomberMan)
+            {
+
+                GetComponentInParent<Character>().OnSpecialPowerActivate.AddListener(SummonerSpecialPower);
+                GetComponentInParent<Character>().InitializeSpecialPower(1);
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SummonerSpecialPower()
     {
-        
+        NetworkObject creatureNO = Runner.Spawn(creaturePrefab, transform.position + transform.forward, Quaternion.identity);
     }
 }

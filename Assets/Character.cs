@@ -1,8 +1,6 @@
 using Fusion;
 using Microlight.MicroBar;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,7 +18,7 @@ public class Character : NetworkBehaviour
     [Networked, OnChangedRender(nameof(OnPlayerNameChanged))]
     public NetworkString<_32> PlayerName { get; set; }
 
- 
+
 
     [Networked, OnChangedRender(nameof(OnTeamChanged))]
     public ETeam Team { get; set; }
@@ -37,16 +35,18 @@ public class Character : NetworkBehaviour
     public float maxSpecialPowerAmount;
     public MicroBar specialPowerBar;
     public UnityEvent OnSpecialPowerActivate;
+    public bool isAPlayer;
 
     public void OnPlayerNameChanged()
     {
+        if (textName == null) return;
         textName.text = PlayerName.Value;
     }
     public void OnPlayerClassChanged()
     {
-        foreach(PlayerClassSelector pcs in GetComponentsInChildren<PlayerClassSelector>())
+        foreach (PlayerClassSelector pcs in GetComponentsInChildren<PlayerClassSelector>())
         {
-            if(pcs.associatedClass != PlayerClass)
+            if (pcs.associatedClass != PlayerClass)
             {
                 Destroy(pcs.gameObject);
             }
@@ -54,17 +54,24 @@ public class Character : NetworkBehaviour
     }
     public void OnTeamChanged()
     {
-        textName.color = PlayerConfig.TeamToColor(Team);
+        if (textName == null) 
+        { 
+            textHp.color = PlayerConfig.TeamToColor(Team);
+        }
+        else
+        {
+            textName.color = PlayerConfig.TeamToColor(Team);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         MagicCube magicCube = other.GetComponent<MagicCube>();
-        if(magicCube != null)
+        if (magicCube != null)
         {
             if (magicCube.GetComponent<NetworkObject>().HasStateAuthority)
             {
-               Runner.Despawn(magicCube.GetComponent<NetworkObject>());
+                Runner.Despawn(magicCube.GetComponent<NetworkObject>());
             }
             else
             {
@@ -78,15 +85,14 @@ public class Character : NetworkBehaviour
         base.Spawned();
         if (HasStateAuthority)
         {
-            Team = PlayerConfig.team;
-            PlayerName = PlayerConfig.playerName;
-            PlayerClass = PlayerConfig.playerClass;
-
-
-
-
+            if (isAPlayer)
+            {
+                Team = PlayerConfig.team;
+                PlayerName = PlayerConfig.playerName;
+                PlayerClass = PlayerConfig.playerClass;
+            }
         }
-        
+
 
         OnHpChanged();
         OnTeamChanged();
@@ -134,12 +140,12 @@ public class Character : NetworkBehaviour
         }
     }
 
-    [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_InflictDamage(int damage)
     {
         Debug.Log(nameof(RPC_InflictDamage) + " CALLED");
-        Hp = Mathf.Clamp(Hp - damage,0,HpMax);
-        
+        Hp = Mathf.Clamp(Hp - damage, 0, HpMax);
+
     }
 
     internal void CharacterFire(Ray ray)
@@ -149,7 +155,7 @@ public class Character : NetworkBehaviour
         Vector3 hitPoint = Vector3.zero;
         if (Physics.Raycast(ray, out raycastHit))
         {
-            hitPoint= raycastHit.point;
+            hitPoint = raycastHit.point;
         }
         RPC_WeaponAestheticShoot(hitPoint);
 
@@ -170,8 +176,8 @@ public class Character : NetworkBehaviour
 
     internal void SpecialPowerRequest()
     {
-      
-        if(currentSpecialPowerAmount == maxSpecialPowerAmount)
+
+        if (currentSpecialPowerAmount == maxSpecialPowerAmount)
         {
             currentSpecialPowerAmount = 0;
             OnSpecialPowerActivate.Invoke();

@@ -86,7 +86,7 @@ public class RoomManager : NetworkBehaviour
     public static ETeam ExtractWinner()
     {
         List<Character> characterList = new List<Character>(FindObjectsOfType<Character>());
-        List<Character> aliveCharacters = characterList.FindAll(x => x.Hp > 0);
+        List<Character> aliveCharacters = characterList.FindAll(x => x.Hp > 0 && x.isAPlayer==true);
         int aliveRedNumber = aliveCharacters.FindAll(x => x.Team == ETeam.Red).Count;
         int aliveBlueNumber = aliveCharacters.FindAll(x => x.Team == ETeam.Blue).Count;
 
