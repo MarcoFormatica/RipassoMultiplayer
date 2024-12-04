@@ -68,7 +68,7 @@ public class StartGameController : MonoBehaviour
         PlayerConfig.playerClass = (EClass) classDropdown.value+1;
         PlayerConfig.playerName = nameInputField.text;
         if (PlayerConfig.playerName == "") { PlayerConfig.playerName = "Player "+ System.Guid.NewGuid().ToString().Split("-")[0]; }
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
 }

@@ -51,6 +51,11 @@ public class RoomManager : NetworkBehaviour
     {
         base.Spawned();
 
+        if (HasStateAuthority)
+        {
+            TimeLeft = RoomConfig.roomTimeSelected;
+        }
+
         OnTimeLeftChanged();
         OnWinnerTextChanged();
 
