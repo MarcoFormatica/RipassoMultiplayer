@@ -119,7 +119,7 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
         networkRunner = GetComponent<NetworkRunner>();
         StartGameArgs startGameArgs = new StartGameArgs();
         startGameArgs.GameMode = GameMode.Shared;
-        startGameArgs.SessionName = "FormaticaProva";
+        startGameArgs.SessionName = RoomConfig.roomNameSelected;
         startGameArgs.PlayerCount = 10;
 
         networkRunner.StartGame(startGameArgs);
