@@ -147,6 +147,13 @@ public class Character : NetworkBehaviour
         Hp = Mathf.Clamp(Hp - damage, 0, HpMax);
 
     }
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_SetTeam(ETeam newTeam)
+    {
+        Debug.Log(nameof(RPC_SetTeam) + " CALLED");
+        Team = newTeam; 
+
+    }
 
     internal void CharacterFire(Ray ray)
     {
