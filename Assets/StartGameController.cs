@@ -20,7 +20,8 @@ public enum EClass
     BomberMan,
     Healer,
     Summoner,
-    Necromancer
+    Necromancer,
+    Priest
 
 }
 
